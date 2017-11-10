@@ -21,6 +21,8 @@ You can install the latest version of Gatsby by following these steps:
 * ensure you have the latest version of yarn installed (>= 1.0.2) https://yarnpkg.com/en/docs/install
 * Install dependencies using `yarn run bootstrap` in the root of the repo.
 
+Gatsby uses a Lerna monorepo that contains all its packages, so using a git as the source for package you are working on in another project will not work. Instead, the repo must be built locally and copied over to the project that is using it. `gatsby-dev-cli` makes this process painless.
+
 The usual contributing steps are:
 
 * Fork the [official repository](https://github.com/gatsbyjs/gatsby).
@@ -32,9 +34,8 @@ The usual contributing steps are:
   changes to packages' source code and compile these changes on-the-fly as you
   work.
 * Install [gatsby-dev-cli](/packages/gatsby-dev-cli/) globally: `yarn global add gatsby-dev-cli`
-* For each of your Gatsby test sites, run the `gatsby-dev` command there to copy
-  the built files from your cloned copy of Gatsby. It'll watch for your changes
-  to Gatsby packages and copy them into the site. For more detailed
+* For each of your Gatsby test sites, run the `gatsby-dev --set-path-to-repo '../gatsby` command there to copy
+  the built files from your cloned copy of Gatsby. The path should be a realative path from the current project to the local   Gatsby repo. It'll watch for your changes to Gatsby packages and copy them into the site. For more detailed
   instructions see the [gatsby-dev-cli README](/packages/gatsby-dev-cli/)
 * Add tests and code for your changes.
 * Once you're done, make sure all tests still pass: `yarn test`
